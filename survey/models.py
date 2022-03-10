@@ -58,10 +58,23 @@ class Choice(models.Model):
     text_answer = models.TextField()
     is_right = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.question
+
+    class Meta:
+        verbose_name = 'Вариант Ответа'
+        verbose_name_plural = 'Варианты Ответа'
+
 
 class User_Answer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_answer')
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='user_answer')
     choice = models.ForeignKey(Choice, on_delete=models.CASCADE, related_name='user_choice', blank=True, null=True)
-
     text_answer = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"Пользователь {self.user.username} ответил(а) на вопрос{self.question.question}"
+
+    class Meta:
+        verbose_name = 'Ответ Пользовтеля'
+        verbose_name_plural = 'Ответы Пользовтелей'
