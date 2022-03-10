@@ -1,0 +1,56 @@
+{% extends "material/admin/login.html" %}
+{% load i18n static %}
+
+{% block side_nav %}
+  <style>
+    #redirect-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+    }
+    #redirect-link img {
+      border-radius: 100%;
+    }
+  </style>
+
+  <div id="redirect-link">
+    <a class="btn-floating pulse" href="https://github.com/MaistrenkoAnton/django-material-admin" target="_blank">
+      <img width="40" height="40 " src="{% static 'img/mark-github.png' %}"
+           alt="">
+    </a>
+  </div>
+
+  <script>
+    const duration = 5;
+    var link = $('#redirect-link');
+    var a = $('#redirect-link > a');
+    var img = $('#redirect-link img');
+    var links = [{
+      image: '{% static 'img/mark-github.png' %}',
+      url: 'https://github.com/MaistrenkoAnton/django-material-admin'
+    },
+    {
+      image: '{% static 'img/pypi.jpg' %}',
+      url: 'https://pypi.org/project/django-material-admin/'
+    }]
+    var calls = 0;
+    var item = 0;
+    function showGitHub() {
+      calls++;
+      if (calls < duration) {
+        return;
+      }
+      if (calls == duration) {
+        link.fadeOut();
+        return;
+      }
+      item = (item + 1) % links.length
+      link.fadeIn();
+      img.attr('src', links[item].image);
+      a.attr('href', links[item].url);
+      calls = 0;
+    }
+    setInterval(showGitHub, 1000);
+  </script>
+{% endblock %}
