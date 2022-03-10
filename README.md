@@ -64,9 +64,11 @@ docker-compose up --build
 #<h3> Test Postman</h3>  
 
 # create, list, update, delete
-    "quiz": "http://127.0.0.1:9000/en-ru/api/v1/quiz/",
-    "choice": "http://127.0.0.1:9000/en-ru/api/v1/choice/",
-    "user_answer": "http://127.0.0.1:9000/en-ru/api/v1/user_answer/",
-    "question": "http://127.0.0.1:9000/en-ru/api/v1/question/",
-    "get_user_answer": "http://127.0.0.1:9000/en-ru/api/v1/get_user_answer/"
+
+# Api Root
+"quiz": "http://surveysystem-kiri.herokuapp.com/en-ru/api/v1/quiz/",
+"choice": "http://surveysystem-kiri.herokuapp.com/en-ru/api/v1/choice/",
+"user_answer": "http://surveysystem-kiri.herokuapp.com/en-ru/api/v1/user_answer/",
+"question": "http://surveysystem-kiri.herokuapp.com/en-ru/api/v1/question/",
+"get_user_answer": "http://surveysystem-kiri.herokuapp.com/en-ru/api/v1/get_user_answer/"
 
