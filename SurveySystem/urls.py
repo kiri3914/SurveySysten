@@ -48,6 +48,8 @@ urlpatterns = i18n_patterns(
 
     # swagger docs
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='swagger'),
-) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(
+)
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 )
