@@ -59,9 +59,9 @@ source env/bin/activate
 ```
 docker-compose up --build
 ```
-#<h3> Link to HEROKU</h3> 
+<h3> #Link to HEROKU</h3> 
 
-#<h3> Test Postman</h3>  
+<h3> #Test Postman</h3>  
 
 # create, list, update, delete
 
