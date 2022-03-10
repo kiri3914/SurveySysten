@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "hacker_news"
+      POSTGRES_USER: "hacker_user"
+      POSTGRES_PASSWORD: "123456"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ../2. Init Database:/docker-entrypoint-initdb.d
+      - .:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  server:
+    container_name: server
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: on-failure
+    command: gunicorn SurveySystem.wsgi:application --bind 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./.env
+    depends_on:
+      - postgres
